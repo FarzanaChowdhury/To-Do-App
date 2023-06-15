@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/pending_tasks_tab.dart';
+import 'package:todo_app/splash_screen.dart';
 import 'add_tasks.dart';
 import 'all_tasks_tab.dart';
 import 'completed_tasks_tab.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
        theme: ThemeData(
          primarySwatch: Colors.blueGrey,
        ),
-       home: MyHomePage(),
+       home: SplashScreen(),
 
     );
   }
