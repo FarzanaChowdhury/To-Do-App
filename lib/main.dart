@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'add_tasks.dart';
 import 'all_tasks_tab.dart';
+import 'completed_tasks_tab.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +15,8 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
       // ),
-      // home: MyHomePage(),
+       home: MyHomePage(),
+
     );
   }
 }
@@ -21,16 +24,14 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final List<Widget> tabs = [
     AllTasksTab(),
-    // CompletedTasksTab(),
+     CompletedTasksTab(),
     // PendingTasksTab(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Your App Name'),
-      ),
+
       body: tabs[0], // Displaying the first tab initially
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

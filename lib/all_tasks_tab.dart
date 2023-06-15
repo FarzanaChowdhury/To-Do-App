@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/add_tasks.dart';
 
 import 'database_management.dart';
 
@@ -64,7 +65,11 @@ class _AllTasksTabState extends State<AllTasksTab> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Code to navigate to the page where the user can add a task
-          Navigator.pushNamed(context, '/add_task');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => AddTaskPage()),
+          );
         },
         child: Icon(Icons.add),
       ),

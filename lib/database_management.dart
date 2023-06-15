@@ -64,33 +64,20 @@ class DatabaseHelper {
       whereArgs: [taskId ?? -1], // Use a default value (-1) if taskId is null
     );
   }
+  Future<List<Task>> getCompletedTasks() async {
+    Database? db = await database;
+    List<Map<String, Object?>>? maps = await db?.query('tasks', where: 'isCompleted = ?', whereArgs: [1]);
+    return List.generate(maps!.length, (index) => Task.fromMap(maps[index]));
+  }
+
+  Future<List<Task>> getPendingTasks() async {
+    Database? db = await database;
+    List<Map<String, Object?>>? maps = await db?.query('tasks', where: 'isCompleted = ?', whereArgs: [0]);
+    return List.generate(maps!.length, (index) => Task.fromMap(maps[index]));
+  }
 
 }
-//
-// class Task {
-//   int id;
-//   String title;
-//   bool isCompleted;
-//
-//   Task({required this.id, required this.title, required this.isCompleted});
-//
-//   Map<String, dynamic> toMap() {
-//     return {
-//       'id': id,
-//       'title': title,
-//       'isCompleted': isCompleted ? 1 : 0,
-//     };
-//   }
-//
-//   factory Task.fromMap(Map<String, dynamic> map) {
-//     return Task(
-//       id: map['id'],
-//       title: map['title'],
-//       isCompleted: map['isCompleted'] == 1,
-//     );
-//   }
-//
-// }
+
 
 class Task {
   int? id;
